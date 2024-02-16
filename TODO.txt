@@ -1,0 +1,33 @@
+The project:
+    A simple fantasy settlement randomiser. It will generate the stats for a settlement. 
+    
+    The first iteration has the aim of learning to use tables. So, I'm not worried about allowing the user to have any contorl other than running the
+        randomiser.
+    
+    
+Phase 1 TODO:
+    (these need breaking down more);
+    Have a think of some stats to generate, eg population, races living there, imports/exports? etc. 
+    Then create the table programatically. 
+
+    "Simulate" 100 years of data, having the "census" happen every 5-10 years. It doesn't need to be super accurate or anything, but you can get some 
+        fun and SIMPLE algorithms in there. You could have population growth + immigration - emmigration. Other stats could be based on population 
+        (or others) such as crime is higher with more poverty, or whatever. Again, don't spend too much time with this. It could also all just be randomiser 
+        and you could refine it with weightings at a later date (in fact, this is propbably better. Then you can add user controls when you add weightings, 
+        so they can pick what they want).
+
+    For styling, see if you can make it look hand written on old partchment. That would be fun.
+
+    Keep this data on the left half of the page, leaving the right side for phase 2.
+
+Phase 2 TODO:
+    Use a data visualiser (D3 or whatever) to visualise the data in some way over time. Like population growth, crime rates, wealth etc. 
+
+    If possible, this should also have a partchment and founctain pen feel to it.
+
+
+
+
+
+Other idea:
+Map generator using snap svg. Top down, partchment and ink style too. Difficult but could be fun. Not for this project though.
