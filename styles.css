@@ -5,7 +5,7 @@ body, html {
 }
 
 .background{
-  background-image: url('parchment.jpg');
+  background-image: url('parchement2.jpg');
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -27,11 +27,14 @@ td, th {
 }
 
 th {
-  font-size: 20px;
+  font-size: 40px;
+  text-transform: capitalize;
+  font-family: titleFont;
 }
 
 td {
-  font-size: 18px;
+  font-size: 30px;
+  font-family: paragraphFont;
 }
 
 /* tr:nth-child(even) td {
@@ -44,4 +47,15 @@ tr:nth-child(odd) td {
 
 caption {
   padding: 10px;
+}
+
+
+@font-face {
+  font-family: titleFont;
+  src: url(fonts/henry_morgan_hand/HenryMorganHand.ttf);
+}
+
+@font-face{
+  font-family: paragraphFont;
+  src: url(fonts/sristian/Sristian.ttf);
 }
