@@ -1,35 +1,47 @@
-html {
-    font-family: sans-serif;
-  }
-  
-  table {
-    border-collapse: collapse;
-    border: 2px solid rgb(200,200,200);
-    letter-spacing: 1px;
-    font-size: 0.8rem;
-  }
-  
-  td, th {
-    border: 1px solid rgb(190,190,190);
-    padding: 10px 20px;
-  }
-  
-  th {
-    background-color: rgb(235,235,235);
-  }
-  
-  td {
-    text-align: center;
-  }
-  
-  tr:nth-child(even) td {
-    background-color: rgb(250,250,250);
-  }
-  
-  tr:nth-child(odd) td {
-    background-color: rgb(245,245,245);
-  }
-  
-  caption {
-    padding: 10px;
-  }
+body, html {
+  font-family: sans-serif;
+  height: 100%;
+  margin: 0;
+}
+
+.background{
+  background-image: url('parchment.jpg');
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(6, 8, 15);
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+}
+
+td, th {
+  border: 1px solid rgb(6, 8, 15);
+  padding: 10px 20px;
+  border-top-right-radius: 5px;
+}
+
+th {
+  font-size: 20px;
+}
+
+td {
+  font-size: 18px;
+}
+
+/* tr:nth-child(even) td {
+  background-color: rgb(250,250,250);
+}
+
+tr:nth-child(odd) td {
+  background-color: rgb(245,245,245);
+} */
+
+caption {
+  padding: 10px;
+}
