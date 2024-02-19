@@ -14,7 +14,7 @@ class Settlement{
         this.censusData = [];
         this.censusData.push(this.initialCensusData);
 
-        for (let index = 1; index < 5; index++) {
+        for (let index = 1; index < 10; index++) {
             const multiplier = 1 + getRandomArbitrary(-0.2, 0.4);
             this.censusData.push({
                 year: index * 5,
@@ -55,7 +55,13 @@ function createSettlement(){
         for (let index = 0; index < city.censusDataPoints.length; index++) {
             const dataPoint = city.censusDataPoints[index];
             const dataCell = document.createElement('td');
-            dataCell.innerText = city.censusData[i][dataPoint];   
+            dataCell.innerText = city.censusData[i][dataPoint];  
+
+            const modifier = getRandomInt(0, 2);
+            if(modifier != 0){
+                dataCell.classList.add('padding' + modifier);
+            }
+            
             dataRow.appendChild(dataCell);
         }
         
@@ -65,9 +71,9 @@ function createSettlement(){
 }
 
 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-  }
+// function getRandomInt(max) {
+//     return Math.floor(Math.random() * max);
+//   }
 
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
