@@ -4,11 +4,12 @@ class Settlement{
     
     constructor(){
         this.initialCensusData = {
+            year: 0,
             population: getRandomInt(30, 300),
             crimeRate: getRandomArbitrary(0.1, 5).toFixed(2),
         }
 
-        this.censusDataPoints = ['population', 'crimeRate'];
+        this.censusDataPoints = ['year','population', 'crimeRate'];
 
         this.censusData = [];
         this.censusData.push(this.initialCensusData);
@@ -16,6 +17,7 @@ class Settlement{
         for (let index = 1; index < 5; index++) {
             const multiplier = 1 + getRandomArbitrary(-0.2, 0.4);
             this.censusData.push({
+                year: index * 5,
                 population: Math.trunc( this.censusData[index-1].population * multiplier),
                 crimeRate: getRandomArbitrary(0.1, 5).toFixed(2),
             })
@@ -33,6 +35,10 @@ function createSettlement(){
     }
 
     const table = document.getElementById('table');
+    const caption = document.createElement('caption');
+    caption.innerText='Fantasy City Census Data';
+    table.appendChild(caption);
+
     const header = document.createElement('tr');
     
     for (let index = 0; index < city.censusDataPoints.length; index++) {
