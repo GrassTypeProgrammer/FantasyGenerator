@@ -20,6 +20,14 @@ table {
   font-size: 0.8rem;
 }
 
+caption {
+  caption-side: bottom;
+  border: 1px solid rgb(6, 8, 15);
+  border-top-style: none;
+  text-align: left;
+  font-style: italic;
+}
+
 td, th {
   border: 1px solid rgb(6, 8, 15);
   padding: 5px 20px;

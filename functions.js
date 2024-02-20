@@ -35,10 +35,7 @@ function createSettlement(){
     }
 
     const table = document.getElementById('table');
-    const caption = document.createElement('caption');
-    caption.innerText='Fantasy City Census Data';
-    table.appendChild(caption);
-
+    
     const header = document.createElement('tr');
     
     for (let index = 0; index < city.censusDataPoints.length; index++) {
@@ -56,7 +53,7 @@ function createSettlement(){
             const dataPoint = city.censusDataPoints[index];
             const dataCell = document.createElement('td');
             dataCell.innerText = city.censusData[i][dataPoint];  
-
+            
             const modifier = getRandomInt(0, 2);
             if(modifier != 0){
                 dataCell.classList.add('padding' + modifier);
@@ -67,7 +64,10 @@ function createSettlement(){
         
         table.appendChild(dataRow);
     }
-
+    
+    const caption = document.createElement('caption');
+    caption.innerText='Fantasy City Census Data';
+    table.appendChild(caption);
 }
 
 
