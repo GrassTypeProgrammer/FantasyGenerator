@@ -7,13 +7,13 @@
     <link href="styles.css" rel="stylesheet">
     <script src="functions.js"></script>
 </head>
-<body>
+
+<body onload="createSettlement()">
     <div class="background">
 
-        <button onclick="createSettlement()">Run</button>
-        <table id="table">
-         
-        </table>
+        <table id="table"></table>
+
+        <button class="button" onclick="createSettlement()">Generate City</button>
     </div>
     </body>
 </html>

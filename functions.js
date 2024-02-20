@@ -1,4 +1,5 @@
 
+var _city; 
 
 class Settlement{
     
@@ -27,19 +28,16 @@ class Settlement{
     }
 }
 
-function createSettlement(){
-    var city = new Settlement();
-    for (let index = 0; index < city.censusData.length; index++) {
-        const element = city.censusData[index];
-        console.log(element.population)
-    }
 
+function createSettlement(){
+    clearTable();
+
+    _city = new Settlement();
     const table = document.getElementById('table');
-    
     const header = document.createElement('tr');
     
-    for (let index = 0; index < city.censusDataPoints.length; index++) {
-        const dataPoint = city.censusDataPoints[index];
+    for (let index = 0; index < _city.censusDataPoints.length; index++) {
+        const dataPoint = _city.censusDataPoints[index];
         const headerCell = document.createElement('th');
         headerCell.innerText = dataPoint;
         header.appendChild(headerCell);
@@ -47,12 +45,12 @@ function createSettlement(){
     
     table.appendChild(header);
     
-    for (let i = 0; i < city.censusData.length; i++) {
+    for (let i = 0; i < _city.censusData.length; i++) {
         const dataRow = document.createElement('tr');
-        for (let index = 0; index < city.censusDataPoints.length; index++) {
-            const dataPoint = city.censusDataPoints[index];
+        for (let index = 0; index < _city.censusDataPoints.length; index++) {
+            const dataPoint = _city.censusDataPoints[index];
             const dataCell = document.createElement('td');
-            dataCell.innerText = city.censusData[i][dataPoint];  
+            dataCell.innerText = _city.censusData[i][dataPoint];  
             
             const modifier = getRandomInt(0, 2);
             if(modifier != 0){
@@ -66,14 +64,10 @@ function createSettlement(){
     }
     
     const caption = document.createElement('caption');
-    caption.innerText='Fantasy City Census Data';
+    caption.innerText='Fantasy _city Census Data';
     table.appendChild(caption);
 }
 
-
-// function getRandomInt(max) {
-//     return Math.floor(Math.random() * max);
-//   }
 
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
@@ -85,3 +79,10 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
   }
 
+function clearTable(){
+    const table = document.getElementById('table');
+    
+    while(table.firstChild != undefined){
+        table.removeChild(table.firstChild);
+    }
+}
