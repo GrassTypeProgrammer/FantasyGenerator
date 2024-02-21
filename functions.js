@@ -4,11 +4,43 @@ var _city;
 class Settlement{
     
     constructor(){
+        this.generateOneOffData();
+        this.generateCensusData();
+    }
+
+//#region onOffDataPoints
+
+    generateOneOffData() {
+        this.oneOffDataPoints = ['name', 'attitudeToOutsiders', 'mainIndustry']
+        this.oneOffData = [];
+        this.oneOffData.name = this.generateName();
+        this.oneOffData.attitudeToOutsiders = this.generateAttitudeToOutsiders();
+        this.oneOffData.mainIndustry = this.generateMainIndustry();
+    }
+
+    generateName(){
+        return 'Gravehold';
+    }
+
+    generateAttitudeToOutsiders(){
+        return 'Friendly';
+    }
+
+    generateMainIndustry(){
+        return 'Mining';
+    }
+
+    //#endregion
+
+
+//#region censusData
+    generateCensusData(){
         this.initialCensusData = {
             year: 0,
             population: getRandomInt(30, 300),
             crimeRate: getRandomArbitrary(0.1, 5).toFixed(2),
         }
+      
 
         this.censusDataPoints = ['year','population', 'crimeRate'];
 
@@ -23,9 +55,8 @@ class Settlement{
                 crimeRate: getRandomArbitrary(0.1, 5).toFixed(2),
             })
         }
-
-        this.censusLength = 2
     }
+//#endregion
 }
 
 
@@ -34,6 +65,52 @@ function createSettlement(){
 
     _city = new Settlement();
     const table = document.getElementById('table');
+
+    displayOneOffData(table);
+    displayCensusData(table);
+
+    const caption = document.createElement('caption');
+    caption.innerText='Fantasy city Census Data';
+    table.appendChild(caption);
+}
+
+
+function displayOneOffData(table){
+    const tableHeader = document.createElement('thead');
+    const tableHeaderCell = document.createElement('th');
+    tableHeaderCell.innerText = 'One Off Data Points';
+    tableHeaderCell.setAttribute('colspan', '100%');
+    tableHeader.appendChild(tableHeaderCell);
+    table.appendChild(tableHeader);
+
+
+    for (let index = 0; index < _city.censusDataPoints.length; index++) {
+        const dataPoint = _city.oneOffDataPoints[index];
+        const row = document.createElement('tr');
+
+        const headerCell = document.createElement('th');
+        headerCell.innerText = dataPoint;
+        
+        const dataCell = document.createElement('td');
+        dataCell.innerText = _city.oneOffData[dataPoint];  
+        dataCell.setAttribute('colspan', '50%');
+        
+        row.appendChild(headerCell);
+        row.appendChild(dataCell);
+        table.appendChild(row);
+    }
+
+    const tableDivider = document.createElement('thead');
+    const tableDividerCell = document.createElement('th');
+    tableDividerCell.innerText = 'census Data Points';
+    tableDividerCell.setAttribute('colspan', '100%');
+    tableDivider.appendChild(tableDividerCell);
+    table.appendChild(tableDivider);
+
+}
+
+
+function displayCensusData(table){
     const header = document.createElement('tr');
     
     for (let index = 0; index < _city.censusDataPoints.length; index++) {
@@ -62,10 +139,6 @@ function createSettlement(){
         
         table.appendChild(dataRow);
     }
-    
-    const caption = document.createElement('caption');
-    caption.innerText='Fantasy _city Census Data';
-    table.appendChild(caption);
 }
 
 
