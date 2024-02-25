@@ -1,69 +1,74 @@
 
 var _city; 
 
-class Settlement{
-    
-    constructor(){
-        this.generateOneOffData();
-        this.generateCensusData();
+function createCity(){
+    generateOneOffData();
+    generateCensusData();
+
+    //#region onOffDataPoints
+
+    function generateOneOffData() {
+        oneOffDataPoints = ['name', 'attitudeToOutsiders', 'mainIndustry']
+        oneOffData = [];
+        oneOffData.name = generateName();
+        oneOffData.attitudeToOutsiders = generateAttitudeToOutsiders();
+        oneOffData.mainIndustry = generateMainIndustry();
     }
 
-//#region onOffDataPoints
-
-    generateOneOffData() {
-        this.oneOffDataPoints = ['name', 'attitudeToOutsiders', 'mainIndustry']
-        this.oneOffData = [];
-        this.oneOffData.name = this.generateName();
-        this.oneOffData.attitudeToOutsiders = this.generateAttitudeToOutsiders();
-        this.oneOffData.mainIndustry = this.generateMainIndustry();
-    }
-
-    generateName(){
+    function generateName(){
         return 'Gravehold';
     }
 
-    generateAttitudeToOutsiders(){
+    function generateAttitudeToOutsiders(){
         return 'Friendly';
     }
 
-    generateMainIndustry(){
+    function generateMainIndustry(){
         return 'Mining';
     }
 
-    //#endregion
+//#endregion
 
 
 //#region censusData
-    generateCensusData(){
-        this.initialCensusData = {
+    function generateCensusData(){
+        initialCensusData = {
             year: 0,
             population: getRandomInt(30, 300),
             crimeRate: getRandomArbitrary(0.1, 5).toFixed(2),
         }
       
 
-        this.censusDataPoints = ['year','population', 'crimeRate'];
+        censusDataPoints = ['year','population', 'crimeRate'];
 
-        this.censusData = [];
-        this.censusData.push(this.initialCensusData);
+        censusData = [];
+        censusData.push(initialCensusData);
 
         for (let index = 1; index < 10; index++) {
             const multiplier = 1 + getRandomArbitrary(-0.2, 0.4);
-            this.censusData.push({
+            censusData.push({
                 year: index * 5,
-                population: Math.trunc( this.censusData[index-1].population * multiplier),
+                population: Math.trunc( censusData[index-1].population * multiplier),
                 crimeRate: getRandomArbitrary(0.1, 5).toFixed(2),
             })
         }
     }
 //#endregion
+
+return {
+    oneOffDataPoints, 
+    oneOffData, 
+    censusDataPoints, 
+    initialCensusData, 
+    censusData}
 }
+
 
 
 function createSettlement(){
     clearTable();
 
-    _city = new Settlement();
+    _city = createCity();
     const table = document.getElementById('table');
 
     displayOneOffData(table);
