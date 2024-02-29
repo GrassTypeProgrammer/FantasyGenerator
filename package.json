@@ -1,0 +1,17 @@
+{
+  "name": "fantasygenerator",
+  "version": "1.0.0",
+  "description": "A stat generator for fantasy cities.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4"
+  }
+}
