@@ -68,32 +68,19 @@ function displayOneOffData(table){
 
 
 function displayCensusData(table){
-    const header = document.createElement('tr');
-    
-    for (let index = 0; index < _city.censusDataPoints.length; index++) {
-        const dataPoint = _city.censusDataPoints[index];
-        const headerCell = document.createElement('th');
-        headerCell.innerText = dataPoint;
-        header.appendChild(headerCell);
-    }
-    
-    table.appendChild(header);
-    
-    for (let i = 0; i < _city.censusData.length; i++) {
+    for (let i = 0; i < _city.censusDataPoints.length; i++) {
+        const dataPoint = _city.censusDataPoints[i];
         const dataRow = document.createElement('tr');
-        for (let index = 0; index < _city.censusDataPoints.length; index++) {
-            const dataPoint = _city.censusDataPoints[index];
-            const dataCell = document.createElement('td');
-            dataCell.innerText = _city.censusData[i][dataPoint];  
-            
-            const modifier = getRandomInt(0, 2);
-            if(modifier != 0){
-                dataCell.classList.add('padding' + modifier);
-            }
-            
-            dataRow.appendChild(dataCell);
+        const firstChild = document.createElement(i == 0? 'th' : 'td');
+        firstChild.innerText = dataPoint;
+        dataRow.appendChild(firstChild);
+
+        for (let j = 0; j < _city.censusData.length; j++) {
+            const cell = document.createElement(i == 0? 'th' : 'td');
+            cell.innerText = _city.censusData[j][dataPoint]
+            dataRow.appendChild(cell);
         }
-        
+
         table.appendChild(dataRow);
     }
 }
