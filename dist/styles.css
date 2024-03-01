@@ -1,5 +1,5 @@
 body, html {
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   height: 100%;
   margin: 0;
 }
@@ -38,13 +38,13 @@ td, th {
 th {
   font-size: 40px;
   text-transform: capitalize;
-  font-family: titleFont;
+  /* font-family: titleFont; */
   border-bottom-width: 2px;
 }
 
 td {
   font-size: 30px;
-  font-family: paragraphFont;
+  /* font-family: paragraphFont; */
 }
 
 /* TODO: There may be a better way to do this? */
@@ -95,7 +95,7 @@ button {
 }
 
 
-@font-face {
+/* @font-face {
   font-family: titleFont;
   src: url(../fonts/henry_morgan_hand/HenryMorganHand.ttf);
 }
@@ -103,5 +103,5 @@ button {
 @font-face{
   font-family: paragraphFont;
   src: url(../fonts/sristian/Sristian.ttf);
-}
+} */
 
