@@ -16,6 +16,40 @@ body, html {
   height: 100%;
   margin: 0;
   background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+}
+
+
+.sideBar{
+  width: 150px;
+  min-width: 150px;
+  background-color: var(--primary);
+  display: flex;
+  flex-direction: column;
+  padding: 30px 10px;
+  gap: 2px;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  bottom: 0; 
+  padding-top: 80px;
+}
+
+.sideBarButton{
+  color: var(--on-primary);
+  background-color: transparent;
+  border-style: none;
+  box-shadow: none;
+  height: 30px;
+  transition: 0.15s;
+
+}
+
+.sideBarButton:hover{
+  color: var(--primary-variant);
+  background-color: var(--on-primary);
+  cursor: pointer;
 }
 
 .content{
@@ -27,7 +61,8 @@ body, html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 100px;
+  padding-top: 120px;
+  flex: 1;
 }
 
 .topBar{
@@ -38,6 +73,9 @@ body, html {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  left: 0px;
+  right: 0px;
 }
 
 .cityName{
@@ -108,6 +146,23 @@ button {
   color: var(--on-primary);
   border-style: none;
   box-shadow: -3px 3px 3px var(--primary-variant);
+  transition: 0.15s;
+}
+
+button:hover{
+  color: var(--primary-variant);
+  background-color: var(--on-primary);
+  cursor: pointer;
+}
+
+.generateButton{
+  background-color: var(--background);
+  color: var(--on-background);
+}
+
+.generateButton:hover{
+  background-color: var(--on-background);
+  color: var(--background);
 }
 
 
