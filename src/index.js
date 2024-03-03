@@ -12,7 +12,6 @@ button.addEventListener('click', onLoad);
 
 
 
-
 var _city; 
 
 
@@ -26,9 +25,9 @@ function createSettlement(){
     displayOneOffData(table);
     displayCensusData(table);
 
-    const caption = document.createElement('caption');
-    caption.innerText='Fantasy city Census Data';
-    table.appendChild(caption);
+    // const caption = document.createElement('caption');
+    // caption.innerText='Fantasy city Census Data';
+    // table.appendChild(caption);
 }
 
 
