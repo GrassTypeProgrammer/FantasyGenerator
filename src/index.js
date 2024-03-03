@@ -25,9 +25,7 @@ function createSettlement(){
     displayOneOffData(table);
     displayCensusData(table);
 
-    // const caption = document.createElement('caption');
-    // caption.innerText='Fantasy city Census Data';
-    // table.appendChild(caption);
+    document.getElementById('cityName').innerHTML = _city.oneOffData['name'];
 }
 
 
