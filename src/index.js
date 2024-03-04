@@ -6,36 +6,42 @@ function onLoad(){
 }
 
 window.addEventListener('load', onLoad)
-
 const button = document.getElementById('button');
 button.addEventListener('click', onLoad);
 
+const sideBarButtons = document.getElementById('sideBarButtons');
+const oneOffDataButton = document.createElement('button');
+oneOffDataButton.innerText = 'One Off Data';
+oneOffDataButton.addEventListener('click', displayOneOffData);
+oneOffDataButton.classList.add('sideBarButton');
+sideBarButtons.appendChild(oneOffDataButton);
 
+const censusDataButton = document.createElement('button');
+censusDataButton.innerText = 'Population';
+censusDataButton.addEventListener('click', displayCensusData);
+censusDataButton.classList.add('sideBarButton');
+sideBarButtons.appendChild(censusDataButton);
 
 var _city; 
-
-
+var _table;
 
 function createSettlement(){
-    clearTable();
-
     _city = createCity();
-    const table = document.getElementById('table');
-
-    displayOneOffData(table);
-    displayCensusData(table);
-
+    _table = document.getElementById('table');
+    displayOneOffData();
     document.getElementById('cityName').innerHTML = _city.oneOffData['name'];
 }
 
 
-function displayOneOffData(table){
+function displayOneOffData(){
+    clearTable();
+
     const tableHeader = document.createElement('thead');
     const tableHeaderCell = document.createElement('th');
     tableHeaderCell.innerText = 'One Off Data Points';
     tableHeaderCell.setAttribute('colspan', '100%');
     tableHeader.appendChild(tableHeaderCell);
-    table.appendChild(tableHeader);
+    _table.appendChild(tableHeader);
 
 
     for (let index = 0; index < _city.censusDataPoints.length; index++) {
@@ -51,20 +57,21 @@ function displayOneOffData(table){
         
         row.appendChild(headerCell);
         row.appendChild(dataCell);
-        table.appendChild(row);
+        _table.appendChild(row);
     }
-
-    const tableDivider = document.createElement('thead');
-    const tableDividerCell = document.createElement('th');
-    tableDividerCell.innerText = 'census Data Points';
-    tableDividerCell.setAttribute('colspan', '100%');
-    tableDivider.appendChild(tableDividerCell);
-    table.appendChild(tableDivider);
-
 }
 
 
-function displayCensusData(table){
+function displayCensusData(){
+    clearTable();
+
+    const tableHeader = document.createElement('thead');
+    const tableHeaderCell = document.createElement('th');
+    tableHeaderCell.innerText = 'census Data Points';
+    tableHeaderCell.setAttribute('colspan', '100%');
+    tableHeader.appendChild(tableHeaderCell);
+    _table.appendChild(tableHeader);
+
     for (let i = 0; i < _city.censusDataPoints.length; i++) {
         const dataPoint = _city.censusDataPoints[i];
         const dataRow = document.createElement('tr');
@@ -78,15 +85,13 @@ function displayCensusData(table){
             dataRow.appendChild(cell);
         }
 
-        table.appendChild(dataRow);
+        _table.appendChild(dataRow);
     }
 }
 
 function clearTable(){
-    const table = document.getElementById('table');
-    
-    while(table.firstChild != undefined){
-        table.removeChild(table.firstChild);
+    while(_table.firstChild != undefined){
+        _table.removeChild(_table.firstChild);
     }
 }
 
