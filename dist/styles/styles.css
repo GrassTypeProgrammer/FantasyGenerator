@@ -81,6 +81,7 @@ body, html {
 .cityName{
   color: var(--on-primary);
   font-size: 30px;
+  text-transform: capitalize;
 }
 
 table {

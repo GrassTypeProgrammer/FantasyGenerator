@@ -43,8 +43,7 @@ function displayOneOffData(){
     tableHeader.appendChild(tableHeaderCell);
     _table.appendChild(tableHeader);
 
-
-    for (let index = 0; index < _city.censusDataPoints.length; index++) {
+    for (let index = 0; index < _city.oneOffDataPoints.length; index++) {
         const dataPoint = _city.oneOffDataPoints[index];
         const row = document.createElement('tr');
 
