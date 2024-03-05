@@ -14,8 +14,8 @@ const industries = ['mining', 'farming', 'fishing', 'blacksmithing', 'herding', 
 
     census:
     population
-    birth rate
-    death rate
+    births
+    deaths
     immigration rate
     crime rate
     unemployment rate
@@ -69,20 +69,62 @@ function createCity(){
             crimeRate: getRandomArbitrary(0.1, 5).toFixed(2),
         }
 
-        censusDataPoints = ['year','population', 'crimeRate'];
+        censusDataPoints = ['years','population', 'births', 'deaths', 'immigration', 'crimeRate'];
 
-        censusData = [];
-        censusData.push(initialCensusData);
+        censusData = {
+           years: [],
+           crimeRate: [],
+           population: [],
+           births: [],
+           deaths: [],
+           immigration: [],
+
+        };
+        censusData.years.push(initialCensusData.year);
+        censusData.crimeRate.push(initialCensusData.crimeRate);
+        censusData.population.push(initialCensusData.population);
+        censusData.births.push(0);
+        censusData.deaths.push(0);
+        censusData.immigration.push(0);
 
         for (let index = 1; index < 10; index++) {
-            const multiplier = 1 + getRandomArbitrary(-0.2, 0.4);
-            censusData.push({
-                year: index * 5,
-                population: Math.trunc( censusData[index-1].population * multiplier),
-                crimeRate: getRandomArbitrary(0.1, 5).toFixed(2),
-            })
+            censusData.years.push(index * 5);
+            censusData.crimeRate.push(getRandomArbitrary(0.1, 5).toFixed(2));
         }
+
+        generatePopulationData();
     }
+
+    function generatePopulationData(){
+        let multiplier = 1 + getRandomArbitrary(-0.2, 0.4);
+        // const years = censusData;
+        // const populationData = censusData.population;
+        
+
+        for (let index = 1; index < censusData.years.length; index++) {
+            const prevPopulation = censusData.population[index-1];
+            const newPopulation =  Math.trunc(prevPopulation * multiplier);
+            const populationDifference = newPopulation - prevPopulation;
+            // difference = 30
+            // births = 10
+            // deaths = 10
+            // immigration = 30 - births + deaths
+
+            const births = getRandomInt(0, populationDifference);
+            const deaths = getRandomInt(0, populationDifference);
+            const immigration = populationDifference - births + deaths;
+            
+            censusData.population.push(newPopulation);
+            censusData.births.push(births);
+            censusData.deaths.push(deaths);
+            censusData.immigration.push(immigration);
+
+           
+        }
+
+
+    }
+
 //#endregion
 
 return {
@@ -92,6 +134,5 @@ return {
     initialCensusData, 
     censusData}
 }
-
 
 

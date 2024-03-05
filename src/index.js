@@ -78,9 +78,9 @@ function displayCensusData(){
         firstChild.innerText = dataPoint;
         dataRow.appendChild(firstChild);
 
-        for (let j = 0; j < _city.censusData.length; j++) {
+        for (let j = 0; j < _city.censusData.years.length; j++) {
             const cell = document.createElement(i == 0? 'th' : 'td');
-            cell.innerText = _city.censusData[j][dataPoint]
+            cell.innerText = _city.censusData[dataPoint][j];
             dataRow.appendChild(cell);
         }
 
